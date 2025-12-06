@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AiFeaturesModule } from './aiFeatures/aiFeatures.module';
 import { ConfigModule } from '@nestjs/config';
+import { PrismaModule } from './prisma/prisma.module';
+import { OpenaiModule } from './openai/openai.module';
 
 @Module({
   imports: [
@@ -11,6 +13,8 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     AiFeaturesModule,
+    PrismaModule,
+    OpenaiModule,
   ],
   controllers: [AppController],
   providers: [AppService],

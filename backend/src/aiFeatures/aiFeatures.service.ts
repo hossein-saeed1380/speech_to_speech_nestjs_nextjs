@@ -1,17 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
-
-const apiKey = process.env.OPENAPI_KEY;
+import { OpenaiService } from 'src/openai/openai.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class AiFeaturesService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private openaiService: OpenaiService) {}
 
   async takeVoice(audio: any) {
-    return 'Hello world!';
+    const text = await this.openaiService.speechToText(audio);
+
+    const newGeneratedText = await this.openaiService.textToText(text);
+
+    const speech = await this.openaiService.textToSpeech(newGeneratedText);
+
+    return "";
   }
 
   async takeText(text: string) {
-    return 'Hello world!';
+    const newGeneratedText = await this.openaiService.textToText(text);
+
+    return "";
   }
 }
