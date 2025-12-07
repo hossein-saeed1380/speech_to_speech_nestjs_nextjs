@@ -1,5 +1,5 @@
-import { Module } from "@nestjs/common";
-import { OpenaiService } from "./openai.service";
+import { Module } from '@nestjs/common';
+import { OpenaiService } from './openai.service';
 import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
