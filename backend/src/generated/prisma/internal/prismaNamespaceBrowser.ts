@@ -75,7 +75,10 @@ export const AiFeaturesScalarFieldEnum = {
   firstname: 'firstname',
   lastname: 'lastname',
   email: 'email',
-  phone: 'phone'
+  phone: 'phone',
+  input: 'input',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type AiFeaturesScalarFieldEnum = (typeof AiFeaturesScalarFieldEnum)[keyof typeof AiFeaturesScalarFieldEnum]

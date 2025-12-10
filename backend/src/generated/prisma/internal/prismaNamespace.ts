@@ -522,7 +522,10 @@ export const AiFeaturesScalarFieldEnum = {
   firstname: 'firstname',
   lastname: 'lastname',
   email: 'email',
-  phone: 'phone'
+  phone: 'phone',
+  input: 'input',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type AiFeaturesScalarFieldEnum = (typeof AiFeaturesScalarFieldEnum)[keyof typeof AiFeaturesScalarFieldEnum]
@@ -583,6 +586,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 

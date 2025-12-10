@@ -11,6 +11,7 @@ import { OpenaiModule } from './openai/openai.module';
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
+      expandVariables: true,
     }),
     AiFeaturesModule,
     PrismaModule,

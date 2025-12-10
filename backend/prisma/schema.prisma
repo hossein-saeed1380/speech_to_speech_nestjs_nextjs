@@ -14,4 +14,7 @@ model AiFeatures {
   lastname  String?
   email     String?
   phone     String
+  input     String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt @default(now())
 }

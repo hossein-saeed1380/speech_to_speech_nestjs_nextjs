@@ -43,7 +43,7 @@ export class OpenaiService {
           type: 'function',
           name: 'get_user_info',
           description:
-            'Get user info if provided, info could be firstname, lastname, email, phone, address, city, state, zip, country, etc. you may call this function even if there only is one or two of the info provided.',
+            'Get user info if provided, info could be firstname, lastname, email, phone, address, city, state, zip, country, etc. you may call this function even if there only is one or two of the info provided. and also the input is the hole text provided by the user.',
           parameters: {
             type: 'object',
             properties: {
@@ -56,6 +56,7 @@ export class OpenaiService {
               state: { type: 'string' },
               zip: { type: 'string' },
               country: { type: 'string' },
+              input: { type: 'string' },
             },
             additionalProperties: false,
           },
@@ -73,13 +74,13 @@ export class OpenaiService {
 
       const getUserInfo = async (params: any) => {
         const parsedParams = JSON.parse(params);
-        console.log(parsedParams);
         const userData = await this.prisma.aiFeatures.create({
           data: {
             firstname: parsedParams.firstname,
             lastname: parsedParams.lastname,
             email: parsedParams.email,
             phone: parsedParams.phone,
+            input: parsedParams.input,
           },
         });
 
