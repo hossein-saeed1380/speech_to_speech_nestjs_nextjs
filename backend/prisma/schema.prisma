@@ -8,13 +8,25 @@ datasource db {
   provider = "postgresql"
 }
 
-model AiFeatures {
-  id        Int     @id @default(autoincrement())
+model User {
+  id        Int         @id @default(autoincrement())
+  username  String      @unique()
+  email     String      @unique()
+  phone     String      @unique()
   firstname String?
   lastname  String?
-  email     String?
-  phone     String   @unique()
-  input     String   @default("")
+  password  String
+  role      String      @default("user")
+  aiHistory AiHistory[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model AiHistory {
+  id        Int      @id @default(autoincrement())
+  messages  Json
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId    Int
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt @default(now())
+  updatedAt DateTime @updatedAt
 }
